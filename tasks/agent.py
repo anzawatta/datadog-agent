@@ -352,8 +352,6 @@ def get_omnibus_env(
     python_runtimes='3',
     hardened_runtime=False,
     system_probe_bin=None,
-    libbcc_tarball=None,
-    with_bcc=True,
     go_mod_cache=None,
 ):
     env = load_release_versions(ctx, release_version)
@@ -391,12 +389,8 @@ def get_omnibus_env(
     )
     env['MAJOR_VERSION'] = major_version
     env['PY_RUNTIMES'] = python_runtimes
-    if with_bcc:
-        env['WITH_BCC'] = 'true'
     if system_probe_bin:
         env['SYSTEM_PROBE_BIN'] = system_probe_bin
-    if libbcc_tarball:
-        env['LIBBCC_TARBALL'] = libbcc_tarball
 
     return env
 
@@ -469,8 +463,6 @@ def omnibus_build(
     omnibus_s3_cache=False,
     hardened_runtime=False,
     system_probe_bin=None,
-    libbcc_tarball=None,
-    with_bcc=True,
     go_mod_cache=None,
 ):
     """
@@ -501,8 +493,6 @@ def omnibus_build(
         python_runtimes=python_runtimes,
         hardened_runtime=hardened_runtime,
         system_probe_bin=system_probe_bin,
-        libbcc_tarball=libbcc_tarball,
-        with_bcc=with_bcc,
         go_mod_cache=go_mod_cache,
     )
 
@@ -580,8 +570,6 @@ def omnibus_manifest(
     python_runtimes='3',
     hardened_runtime=False,
     system_probe_bin=None,
-    libbcc_tarball=None,
-    with_bcc=True,
     go_mod_cache=None,
 ):
     # base dir (can be overridden through env vars, command line takes precedence)
@@ -595,8 +583,6 @@ def omnibus_manifest(
         python_runtimes=python_runtimes,
         hardened_runtime=hardened_runtime,
         system_probe_bin=system_probe_bin,
-        libbcc_tarball=libbcc_tarball,
-        with_bcc=with_bcc,
         go_mod_cache=go_mod_cache,
     )
 
