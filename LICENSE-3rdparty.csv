@@ -99,6 +99,7 @@ core,"github.com/PuerkitoBio/urlesc",BSD-3-Clause
 core,"github.com/StackExchange/wmi",MIT
 core,"github.com/VividCortex/ewma",MIT
 core,"github.com/acarl005/stripansi",MIT
+core,"github.com/alecthomas/jsonschema",MIT
 core,"github.com/alecthomas/participle",MIT
 core,"github.com/alecthomas/participle/lexer",MIT
 core,"github.com/alecthomas/participle/lexer/ebnf",MIT
@@ -416,6 +417,7 @@ core,"github.com/hashicorp/serf/coordinate",MPL-2.0
 core,"github.com/hectane/go-acl",MIT
 core,"github.com/hectane/go-acl/api",MIT
 core,"github.com/huandu/xstrings",MIT
+core,"github.com/iancoleman/orderedmap",MIT
 core,"github.com/ianlancetaylor/cgosymbolizer",BSD-3-Clause
 core,"github.com/imdario/mergo",BSD-3-Clause
 core,"github.com/inconshreveable/mousetrap",Apache-2.0
