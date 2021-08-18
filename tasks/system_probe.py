@@ -102,7 +102,7 @@ def build(
         build_tags.append(BUNDLE_TAG)
     if with_bcc:
         build_tags.append(BCC_TAG)
-    if nikos_embedded_path is not None:
+    if nikos_embedded_path:
         build_tags.append(DNF_TAG)
 
     # TODO static option
