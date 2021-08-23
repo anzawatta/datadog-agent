@@ -43,7 +43,6 @@ func generateData(points int, items int, tags int) metrics.Series {
 }
 
 func benchmarkJSONPayloadBuilderUsage(b *testing.B, points int, items int, tags int) {
-
 	series := generateData(points, items, tags)
 	payloadBuilder := stream.NewJSONPayloadBuilder(true)
 
