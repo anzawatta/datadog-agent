@@ -162,4 +162,14 @@ typedef struct {
     __u32 ifindex;
 } ip_route_gateway_t;
 
+typedef struct {
+    struct sock *sk;
+    struct msghdr *msg;
+} udp_recv_sock_t;
+
+typedef struct {
+    __u32 pid;
+    __u32 fd;
+} pid_fd_t;
+
 #endif

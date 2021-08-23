@@ -106,8 +106,8 @@ github.com/DataDog/datadog-go v4.8.1+incompatible h1:KgnZAqwHyxgl6Fdhu2GtdZT7xFi
 github.com/DataDog/datadog-go v4.8.1+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 github.com/DataDog/datadog-operator v0.5.0-rc.2.0.20210402083916-25ba9a22e67a h1:vqz6k806rvz01tIzOA2UHE3j1IEAMcDxw8O+nA3H+Mk=
 github.com/DataDog/datadog-operator v0.5.0-rc.2.0.20210402083916-25ba9a22e67a/go.mod h1:2qOvG41jii2ks6Umn6MbDGlHRgwoFiYXcjgQQ9VlsS0=
-github.com/DataDog/ebpf v0.0.0-20210419131141-ea64821c9793 h1:cqHOlzcc//2talOrZ+H7y3k9t3g16kH4EHRRYnDeRHU=
-github.com/DataDog/ebpf v0.0.0-20210419131141-ea64821c9793/go.mod h1:tSPYMUcskM0OLVEJSoydgYUVuhX8hOSmtaSLNtOQThg=
+github.com/DataDog/ebpf v0.0.0-20210825140558-0ab6483afb41 h1:kVTvY16OC60N47mceVPFT8Dd1Zc2IRcY6x9Jx1XAETE=
+github.com/DataDog/ebpf v0.0.0-20210825140558-0ab6483afb41/go.mod h1:tSPYMUcskM0OLVEJSoydgYUVuhX8hOSmtaSLNtOQThg=
 github.com/DataDog/extendeddaemonset v0.5.1-0.20210315105301-41547d4ff09c h1:a9OMhZzrrB4nd2eAsXZIBkQ061Gb/QT4CI2g+OWWevs=
 github.com/DataDog/extendeddaemonset v0.5.1-0.20210315105301-41547d4ff09c/go.mod h1:lMIXf2EAzxbIv2zEvWu1bdqlaclUWoCtN13MHuPcY5I=
 github.com/DataDog/gobpf v0.0.0-20210322155958-9866ef4cd22c h1:IlCUv480yLiHPGdB63f5Lw6TP8P1dEP/SjXzOVDRcWA=
@@ -1721,6 +1721,8 @@ golang.org/x/sys v0.0.0-20210510120138-977fb7262007/go.mod h1:oPkhp1MJrh7nUepCBc
 golang.org/x/sys v0.0.0-20210525143221-35b2ab0089ea/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20210601080250-7ecdf8ef093b h1:qh4f65QIVFjq9eBURLEYWqaEXmOyqdUyiBSgaXWccWk=
 golang.org/x/sys v0.0.0-20210601080250-7ecdf8ef093b/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.0.0-20210823070655-63515b42dcdf h1:2ucpDCmfkl8Bd/FsLtiD653Wf96cW37s+iGx93zsu4k=
+golang.org/x/sys v0.0.0-20210823070655-63515b42dcdf/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/term v0.0.0-20201117132131-f5c789dd3221/go.mod h1:Nr5EML6q2oocZ2LXRh80K7BxOlk5/8JxuGnuhpl+muw=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 h1:v+OssWQX+hTHEmOBgwxdZxK4zHq3yOs8F9J7mk0PY8E=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=

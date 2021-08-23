@@ -119,6 +119,17 @@ func (nt *networkTracer) Register(httpMux *module.Router) error {
 		utils.WriteAsJSON(w, debugging.HTTP(cs.HTTP, cs.DNS))
 	})
 
+	httpMux.HandleFunc("/debug/ebpf_maps", func(w http.ResponseWriter, req *http.Request) {
+		ebpfMaps, err := nt.tracer.DebugEBPFMaps()
+		if err != nil {
+			log.Errorf("unable to retrieve eBPF maps: %s", err)
+			w.WriteHeader(500)
+			return
+		}
+
+		utils.WriteAsJSON(w, ebpfMaps)
+	})
+
 	// Convenience logging if nothing has made any requests to the system-probe in some time, let's log something.
 	// This should be helpful for customers + support to debug the underlying issue.
 	time.AfterFunc(inactivityLogDuration, func() {

@@ -190,6 +190,7 @@ func NewTracer(config *config.Config) (*Tracer, error) {
 	}
 	perfHandlerTCP := ddebpf.NewPerfHandler(closedChannelSize)
 	m := netebpf.NewManager(perfHandlerTCP, runtimeTracer)
+	setupDumpHandler(m)
 
 	// exclude all non-enabled probes to ensure we don't run into problems with unsupported probe types
 	for _, p := range m.Probes {
@@ -860,6 +861,14 @@ func (t *Tracer) DebugNetworkMaps() (*network.Connections, error) {
 		return nil, fmt.Errorf("error retrieving connections: %s", err)
 	}
 	return &network.Connections{Conns: latestConns}, nil
+}
+
+// DebugEBPFMaps returns all maps registred in the eBPF manager
+func (t *Tracer) DebugEBPFMaps() (string, error) {
+	if t.m == nil {
+		return "", fmt.Errorf("manager not initialized")
+	}
+	return t.m.DumpMaps()
 }
 
 func (t *Tracer) getProbeProgramIDs() (map[string]uint32, error) {
