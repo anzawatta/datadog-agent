@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"sync/atomic"
 	"time"
 
@@ -120,7 +121,12 @@ func (nt *networkTracer) Register(httpMux *module.Router) error {
 	})
 
 	httpMux.HandleFunc("/debug/ebpf_maps", func(w http.ResponseWriter, req *http.Request) {
-		ebpfMaps, err := nt.tracer.DebugEBPFMaps()
+		maps := []string{}
+		if listMaps := req.URL.Query().Get("maps"); listMaps != "" {
+			maps = strings.Split(listMaps, ",")
+		}
+
+		ebpfMaps, err := nt.tracer.DebugEBPFMaps(maps...)
 		if err != nil {
 			log.Errorf("unable to retrieve eBPF maps: %s", err)
 			w.WriteHeader(500)

@@ -53,7 +53,7 @@ require (
 	github.com/DataDog/datadog-agent/pkg/util/winutil v0.31.0-rc.5
 	github.com/DataDog/datadog-go v4.8.1+incompatible
 	github.com/DataDog/datadog-operator v0.5.0-rc.2.0.20210402083916-25ba9a22e67a
-	github.com/DataDog/ebpf v0.0.0-20210825140558-0ab6483afb41
+	github.com/DataDog/ebpf v0.0.0
 	github.com/DataDog/gohai v0.0.0-20210303102637-6b668acb50dd
 	github.com/DataDog/gopsutil v0.0.0-20200624212600-1b53412ef321
 	github.com/DataDog/mmh3 v0.0.0-20200316233529-f5b682d8c981 // indirect
@@ -241,3 +241,6 @@ replace k8s.io/kube-state-metrics/v2 => github.com/ahmed-mez/kube-state-metrics/
 
 // Remove once the PR aptly-dev/aptly#967 is merged and released.
 replace github.com/aptly-dev/aptly => github.com/lebauce/aptly v0.7.2-0.20210723103859-345a32860f4d
+
+// for testing purpose until PR nplanel/dump-maps-from-optional-list is merged
+replace github.com/DataDog/ebpf => ../ebpf

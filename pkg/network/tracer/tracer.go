@@ -864,11 +864,11 @@ func (t *Tracer) DebugNetworkMaps() (*network.Connections, error) {
 }
 
 // DebugEBPFMaps returns all maps registred in the eBPF manager
-func (t *Tracer) DebugEBPFMaps() (string, error) {
+func (t *Tracer) DebugEBPFMaps(maps ...string) (string, error) {
 	if t.m == nil {
 		return "", fmt.Errorf("manager not initialized")
 	}
-	return t.m.DumpMaps()
+	return t.m.DumpMaps(maps...)
 }
 
 func (t *Tracer) getProbeProgramIDs() (map[string]uint32, error) {
