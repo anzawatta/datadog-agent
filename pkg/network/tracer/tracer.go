@@ -868,7 +868,19 @@ func (t *Tracer) DebugEBPFMaps(maps ...string) (string, error) {
 	if t.m == nil {
 		return "", fmt.Errorf("manager not initialized")
 	}
-	return t.m.DumpMaps(maps...)
+	tracerMaps, err := t.m.DumpMaps(maps...)
+	if err != nil {
+		return "", err
+	}
+	if t.httpMonitor == nil {
+		return "tracer:\n" + tracerMaps, nil
+	}
+
+	httpMaps, err := t.httpMonitor.DumpMaps(maps...)
+	if err != nil {
+		return "", err
+	}
+	return "tracer:\n" + tracerMaps + "\nhttp_monitor:\n" + httpMaps, nil
 }
 
 func (t *Tracer) getProbeProgramIDs() (map[string]uint32, error) {
