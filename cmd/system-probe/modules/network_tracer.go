@@ -120,6 +120,32 @@ func (nt *networkTracer) Register(httpMux *module.Router) error {
 		utils.WriteAsJSON(w, debugging.HTTP(cs.HTTP, cs.DNS))
 	})
 
+	// /debug/ebpf_enable_perfmapstats?maps= enable perf maps statistics
+	// maps are a list of map name to enable (default)
+	// for example : ?maps=map1=false,map2=true,map3 will enable map2 and map3 but disable map1
+	// disable function have no action at the moment
+	//
+	// PerfMapsStats would be collected by /debug/ebpf_maps
+	httpMux.HandleFunc("/debug/ebpf_enable_perfmap_stats", func(w http.ResponseWriter, req *http.Request) {
+		statsMaps := req.URL.Query().Get("maps")
+		if statsMaps == "" {
+			return
+		}
+		for _, p := range strings.Split(statsMaps, ",") {
+			s := strings.Split(p, "=")
+			mapName := s[0]
+			enable := true
+			if len(s) == 2 {
+				if strings.HasSuffix(s[1], "false") {
+					enable = false
+				}
+			}
+			nt.tracer.DebugEBPFEnablePerfMapStats(mapName, enable)
+		}
+	})
+
+	// /debug/ebpf_maps as default will dump all registered maps/perfmaps
+	// an optional ?maps= argument could be pass with a list of map name : ?maps=map1,map2,map3
 	httpMux.HandleFunc("/debug/ebpf_maps", func(w http.ResponseWriter, req *http.Request) {
 		maps := []string{}
 		if listMaps := req.URL.Query().Get("maps"); listMaps != "" {

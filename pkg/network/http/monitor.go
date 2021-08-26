@@ -196,3 +196,7 @@ func (m *Monitor) process(transactions []httpTX, err error) {
 func (m *Monitor) DumpMaps(maps ...string) (string, error) {
 	return m.ebpfProgram.Manager.DumpMaps(maps...)
 }
+
+func (m *Monitor) EnablePerfMapStats(mapName string, enable bool) {
+	m.ebpfProgram.Manager.EnablePerfMapStats(mapName, enable)
+}

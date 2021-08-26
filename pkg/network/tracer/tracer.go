@@ -883,6 +883,18 @@ func (t *Tracer) DebugEBPFMaps(maps ...string) (string, error) {
 	return "tracer:\n" + tracerMaps + "\nhttp_monitor:\n" + httpMaps, nil
 }
 
+// DebugEBPFEnablePerfMapStats enable/disable perf map statsistics to be collected
+// disable function have no actio at the moment
+func (t *Tracer) DebugEBPFEnablePerfMapStats(mapName string, enable bool) {
+	if t.m == nil {
+		return
+	}
+	t.m.EnablePerfMapStats(mapName, enable)
+	if t.httpMonitor != nil {
+		t.httpMonitor.EnablePerfMapStats(mapName, enable)
+	}
+}
+
 func (t *Tracer) getProbeProgramIDs() (map[string]uint32, error) {
 	fds := make(map[string]uint32, 0)
 	for _, p := range t.m.Probes {
