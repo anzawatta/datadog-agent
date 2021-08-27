@@ -1,5 +1,11 @@
 ARG BASE_IMAGE=mcr.microsoft.com/powershell:lts-windowsservercore-1809
-FROM ${BASE_IMAGE}
+ARG NETAPI32_IMAGE=mcr.microsoft.com/powershell:lts-windowsservercore-1809
+
+FROM ${NETAPI32_IMAGE} AS netapi32
+
+FROM ${BASE_IMAGE} AS final
+# This "copy netapi32.dll" hack can be reverted once https://github.com/microsoft/Windows-Containers/issues/72 is fixed.
+COPY --from=netapi32 /Windows/System32/netapi32.dll /Windows/System32/netapi32.dll
 
 ARG WITH_JMX="false"
 ARG VARIANT="unknown"
