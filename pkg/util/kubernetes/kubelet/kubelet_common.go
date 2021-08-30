@@ -82,6 +82,12 @@ func KubeContainerIDToTaggerEntityID(ctrID string) (string, error) {
 	return "", fmt.Errorf("can't extract an entity ID from container ID %s", ctrID)
 }
 
+// RawContainerIDToTaggerEntityID builds an entity ID from a raw container ID
+// (i. e. not including the <runtime>:// prefix).
+func RawContainerIDToTaggerEntityID(ctrID string) string {
+	return containers.ContainerEntityName + ctrID
+}
+
 // KubePodUIDToTaggerEntityID builds an entity ID from a pod UID coming from
 // the pod status (i.e. including the <runtime>:// prefix).
 func KubePodUIDToTaggerEntityID(podUID string) (string, error) {
