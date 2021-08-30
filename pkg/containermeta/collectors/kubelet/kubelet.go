@@ -34,7 +34,7 @@ func init() {
 }
 
 func (c *collector) Start(ctx context.Context, ch chan []containermeta.Event) error {
-	if !config.IsKubernetes() {
+	if !config.IsFeaturePresent(config.Kubernetes) {
 		return errors.New("the Agent is not running in Kubernetes")
 	}
 

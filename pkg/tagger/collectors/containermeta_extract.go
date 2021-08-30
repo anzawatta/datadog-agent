@@ -12,6 +12,7 @@ import (
 
 	"github.com/DataDog/datadog-agent/pkg/containermeta"
 	"github.com/DataDog/datadog-agent/pkg/tagger/utils"
+	"github.com/DataDog/datadog-agent/pkg/util/containers"
 	"github.com/DataDog/datadog-agent/pkg/util/kubernetes"
 	"github.com/DataDog/datadog-agent/pkg/util/kubernetes/kubelet"
 	"github.com/DataDog/datadog-agent/pkg/util/log"
@@ -183,7 +184,7 @@ func (c *ContainerMetaCollector) handleKubePod(ev containermeta.Event) []*TagInf
 		low, orch, high, standard := cTags.Compute()
 		tagInfos = append(tagInfos, &TagInfo{
 			Source:               containermetaCollectorName,
-			Entity:               kubelet.RawContainerIDToTaggerEntityID(pod.ID),
+			Entity:               containers.BuildTaggerEntityName(container.ID),
 			HighCardTags:         high,
 			OrchestratorCardTags: orch,
 			LowCardTags:          low,

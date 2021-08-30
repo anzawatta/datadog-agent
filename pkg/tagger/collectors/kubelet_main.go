@@ -42,7 +42,7 @@ type KubeletCollector struct {
 
 // Detect tries to connect to the kubelet
 func (c *KubeletCollector) Detect(ctx context.Context, out chan<- []*TagInfo) (CollectionMode, error) {
-	if !config.IsKubernetes() {
+	if !config.IsFeaturePresent(config.Kubernetes) {
 		return NoCollection, errors.New("the Agent is not running in Kubernetes")
 	}
 

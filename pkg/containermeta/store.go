@@ -7,10 +7,10 @@ package containermeta
 
 import (
 	"context"
-	"fmt"
 	"sync"
 	"time"
 
+	"github.com/DataDog/datadog-agent/pkg/errors"
 	"github.com/DataDog/datadog-agent/pkg/status/health"
 	"github.com/DataDog/datadog-agent/pkg/util/log"
 	"github.com/DataDog/datadog-agent/pkg/util/retry"
@@ -141,8 +141,7 @@ func (s *Store) GetContainer(id string) (Container, error) {
 
 	c, ok := s.containers[id]
 	if !ok {
-		// TODO(juliogreff): create a NotFound error type
-		return c, fmt.Errorf("container %q not found", id)
+		return c, errors.NewNotFound(id)
 	}
 
 	return c, nil
@@ -155,8 +154,7 @@ func (s *Store) GetKubernetesPod(id string) (KubernetesPod, error) {
 
 	p, ok := s.kubePods[id]
 	if !ok {
-		// TODO(juliogreff): create a NotFound error type
-		return p, fmt.Errorf("kubernetes pod %q not found", id)
+		return p, errors.NewNotFound(id)
 	}
 
 	return p, nil
@@ -169,8 +167,7 @@ func (s *Store) GetECSTask(id string) (ECSTask, error) {
 
 	t, ok := s.ecsTasks[id]
 	if !ok {
-		// TODO(juliogreff): create a NotFound error type
-		return t, fmt.Errorf("container %q not found", id)
+		return t, errors.NewNotFound(id)
 	}
 
 	return t, nil
